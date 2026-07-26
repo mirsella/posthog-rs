@@ -1,3 +1,5 @@
+mod common;
+
 #[cfg(all(feature = "e2e-test", feature = "async-client"))]
 #[tokio::test]
 async fn get_client_async() {
@@ -15,6 +17,7 @@ async fn get_client_async() {
             return;
         }
     };
+    common::install_rustls_provider();
     let client = posthog_rs::client(api_key.as_str()).await;
 
     let mut child_map = HashMap::new();
@@ -45,6 +48,7 @@ fn get_client_blocking() {
             return;
         }
     };
+    common::install_rustls_provider();
     let client = posthog_rs::client(api_key.as_str());
 
     let mut child_map = HashMap::new();

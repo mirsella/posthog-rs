@@ -1,11 +1,14 @@
 #![cfg(not(feature = "async-client"))]
 
+mod common;
+
 use httpmock::prelude::*;
 use posthog_rs::FlagValue;
 use serde_json::json;
 use std::collections::HashMap;
 
 fn create_test_client(base_url: String) -> posthog_rs::Client {
+    common::install_rustls_provider();
     // Use the From implementation to ensure endpoint_manager is set up correctly
     let options: posthog_rs::ClientOptions = (("test_api_key", base_url.as_str())).into();
     posthog_rs::client(options)

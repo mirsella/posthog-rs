@@ -1,3 +1,5 @@
+mod common;
+
 use httpmock::prelude::*;
 #[cfg(feature = "async-client")]
 use posthog_rs::AsyncFlagPoller;
@@ -112,6 +114,7 @@ fn test_local_evaluation_missing_flag() {
 #[cfg(feature = "async-client")]
 #[tokio::test]
 async fn test_local_evaluation_with_mock_server() {
+    common::install_rustls_provider();
     let server = MockServer::start();
 
     // Mock the local evaluation endpoint

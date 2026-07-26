@@ -463,16 +463,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "ctor"
-version = "0.1.26"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "6d2301688392eb071b0bf1a37be05c469d3cc4dbbd95df672fe28ab021e6a096"
-dependencies = [
- "quote",
- "syn 1.0.109",
-]
-
-[[package]]
 name = "darling"
 version = "0.20.11"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1558,13 +1548,13 @@ name = "posthog-rs"
 version = "0.5.3"
 dependencies = [
  "chrono",
- "ctor",
  "derive_builder",
  "dotenv",
  "futures",
  "httpmock",
  "regex",
  "reqwest",
+ "rustls",
  "semver",
  "serde",
  "serde_json",
@@ -1745,6 +1735,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "69f9466fb2c14ea04357e91413efb882e2a6d4a406e625449bc0a5d360d53a21"
 dependencies = [
  "once_cell",
+ "ring",
  "rustls-pki-types",
  "rustls-webpki",
  "subtle",

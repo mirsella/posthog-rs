@@ -1,6 +1,9 @@
+mod common;
+
 #[cfg(all(feature = "e2e-test", feature = "async-client"))]
 #[tokio::test]
 async fn get_client_async() {
+    common::install_rustls_provider();
     use dotenv::dotenv;
     dotenv().ok(); // Load the .env file
 
@@ -31,6 +34,7 @@ async fn get_client_async() {
 #[cfg(all(feature = "e2e-test", not(feature = "async-client")))]
 #[test]
 fn get_client_blocking() {
+    common::install_rustls_provider();
     use dotenv::dotenv;
     dotenv().ok(); // Load the .env file
 
